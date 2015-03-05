@@ -7,6 +7,7 @@ var uglify = require('gulp-uglify'); // minify scripts
 var ngAnnotate = require('gulp-ng-annotate') // allow angular to do dependency injection after script has been minified
 var jshint = require('gulp-jshint'); // js linter
 var stylish = require('jshint-stylish'); // JSHint reporter
+var connect = require('gulp-connect'); // allow app to run on a development server
  
 gulp.task('less', function() {
   return gulp.src('css/app.less')
@@ -29,6 +30,7 @@ gulp.task('js', function () {
     .pipe(gulp.dest('dist'));
 });
 
+// Run 'less' and 'js' functions to update minified/concatenated js and css files
 gulp.task('watch', ['less', 'js'], function() {
   gulp.watch('css/**/*.less', ['less']);
   gulp.watch('src/**/*.js', ['js']);
@@ -45,4 +47,11 @@ gulp.task('compress', function() {
   gulp.src('lib/*.js')
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
+});
+
+gulp.task('connect', function () {
+  connect.server({
+    root: 'app/',
+    port: 8888
+  });
 });
