@@ -1,20 +1,23 @@
-var gulp = require('gulp'); // mandatory
-var less = require('gulp-less'); // compile .less files
-var concat = require('gulp-concat'); // concatenate files
-var sourcemaps = require('gulp-sourcemaps') // allow browser console.log to show relevant info in minified js
-var revall = require('gulp-rev-all'); // add hash to filenames and override urls in css files to hashed
-var uglify = require('gulp-uglify'); // minify scripts
-var ngAnnotate = require('gulp-ng-annotate') // allow angular to do dependency injection after script has been minified
-var jshint = require('gulp-jshint'); // js linter
-var stylish = require('jshint-stylish'); // JSHint reporter
-var notify = require("gulp-notify"); // send messages based on Vinyl Files or Errors
-var connect = require('gulp-connect'); // allow app to run on a development server
-var del = require('del'); // delete files and folders - https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md
+var gulp = require('gulp'), // mandatory
+    less = require('gulp-less'), // compile .less files
+    concat = require('gulp-concat'), // concatenate files
+    sourcemaps = require('gulp-sourcemaps'), // allow browser console.log to show relevant info in minified js
+    revall = require('gulp-rev-all'), // add hash to filenames and override urls in css files to hashed
+    uglify = require('gulp-uglify'), // minify scripts
+    minifyCSS = require('gulp-minify-css'), // minify css
+    ngAnnotate = require('gulp-ng-annotate'), // allow angular to do dependency injection after script has been minified
+    jshint = require('gulp-jshint'), // js linter
+    stylish = require('jshint-stylish'), // JSHint reporter
+    notify = require("gulp-notify"), // send messages based on Vinyl Files or Errors - required for jshint
+    connect = require('gulp-connect'), // allow app to run on a development server
+    del = require('del'); // delete files and folders - https://github.com/gulpjs/gulp/blob/master/docs/recipes/delete-files-folder.md
 
 // create '.css' file from '.less' 
 gulp.task('less', function() {
   return gulp.src(['./app/**/*.less', '!./app/bower_components/**'])
     .pipe(less())
+    .pipe(gulp.dest('./app'))
+    .pipe(minifyCSS())
     .pipe(gulp.dest('./dist'));
 });
 

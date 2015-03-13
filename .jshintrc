@@ -6,5 +6,6 @@
   "unused": true,
   "-W058": true,
   "-W014": true,
-  "expr": true
+  "expr": true,
+  "predef": [ "angular", "define", "require" ]
 }

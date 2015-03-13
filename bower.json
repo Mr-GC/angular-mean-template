@@ -21,5 +21,17 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-mocks": "~1.4.0",
+    "jquery": "2.1.1",
+    "bootstrap": "~3.1.1",
+    "foundation": "~5.5.1",
+    "angular-route": "~1.4.0",
+    "angular-animate": "~1.4.0"
+  },
+  "resolutions": {
+    "angular": "1.4.0-build.3897+sha.1fc87e2"
+  }
 }
