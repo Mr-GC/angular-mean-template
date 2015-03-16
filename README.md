@@ -1,3 +1,3 @@
-# angular-gulp-bower-template
+# angular-mean-template
 
-A boilerplate for a typical AngularJS web app with a structure is based on the popular Angular Seed boilerplate, developed by the Angular team.
+A boilerplate for an app using MongoDB, Express.js, AngularJS and Node.js
